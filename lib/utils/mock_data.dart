@@ -46,7 +46,7 @@ List<DeviceModel> mockDevices = [
   ),
   DeviceModel(
     name: '血压监测仪',
-    status: '离线',
+    status: '在线',
     lastSync: '2小时前',
     imageAsset: 'assets/bp.png',
   ),

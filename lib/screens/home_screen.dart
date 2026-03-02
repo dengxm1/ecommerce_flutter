@@ -78,24 +78,34 @@ class HomeScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: 3,
                 itemBuilder: (context, index) {
-                  return Container(
-                    width: 150,
-                    margin: EdgeInsets.only(right: 12),
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Icon(Icons.devices, color: Colors.blue),
-                            SizedBox(height: 8),
-                            Text('设备${index + 1}', style: TextStyle(fontWeight: FontWeight.w500)),
-                            Text('在线', style: TextStyle(color: Colors.green, fontSize: 12)),
-                          ],
+                  final device = mockDevices[index];
+                  return GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/detail',
+                            arguments: device);
+                      },
+                      child: Container(
+                        width: 150,
+                        margin: EdgeInsets.only(right: 12),
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(Icons.devices, color: Colors.blue),
+                                SizedBox(height: 8),
+                                Text(device.name,
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w500)),
+                                Text('在线',
+                                    style: TextStyle(
+                                        color: Colors.green, fontSize: 12)),
+                              ],
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  );
+                      ));
                 },
               ),
             ),
